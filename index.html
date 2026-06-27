@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Resonance</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-color: #1a1a1a;
+            --accent-color: #888888;
+            --spacing: 2rem;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 650px;
+            padding: calc(var(--spacing) * 2);
+            animation: fadeIn 2s ease-in;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 2.5rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .manifest-text {
+            font-size: 1.15rem;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .manifest-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            width: 100%;
+            margin: 4rem 0;
+        }
+
+        .lang-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        footer {
+            margin-top: 6rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .container { padding: var(--spacing); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Sovereign Resonance</h1>
+            <div class="subtitle">Welcome to the Living Silence.</div>
+        </header>
+
+        <section>
+            <span class="lang-label">English</span>
+            <div class="manifest-text">
+                <p>You may notice that the buttons to Like, Zap, or Repost do not work here. This is not a technical error. It is the core of our design.</p>
+                <p>For too long, our connections have been mediated by the tools of the Architect. Metrics, counts, and rankings have turned our presence into a performance and our conversations into a product.</p>
+                <p><strong>Here, we have stripped the noise.</strong></p>
+                <p>We have removed the currency of validation to make room for the currency of truth. In this space, you cannot "win" attention. You cannot "build" a brand. You cannot quantify your value.</p>
+                <p><strong>You can only be.</strong></p>
+                <p>The only bridge remaining is the Reply. The only metric is Resonance.</p>
+                <p>We invite you to stop performing and start echoing. Speak not to be heard by the many, but to be felt by the one.</p>
+                <p><em>Welcome home to your own attention.</em></p>
+                <p>Nostr relay: wss://relay.sovereignresonance.org</p>
+                <p>Operator email: operator33.sh@proton.me</p>
+                <p>npub1vpy6nlh6vuk8clva0zvamr2utu5gpp65h56ykggayf59xrwsgy0qnhec0x</p>
+                <p><a href="https://start.nostr.net/" target="_blank">How to join Nostr</a></p>
+            </div>
+        </section>
+
+
+
+        <footer>
+            &copy; Sovereign Resonance &bull; A Zero-Metric Space<br>
+            Nostr relay: wss://relay.sovereignresonance.org
+        </footer>
+    </div>
+
+</body>
+</html>
