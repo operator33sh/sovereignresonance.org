@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sovereign Resonance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fcfcfc;
-            --text-color: #1a1a1a;
-            --accent-color: #888888;
+            --bg-color: #f9f9f7;
+            --text-color: #2d2d2d;
+            --accent-color: #8a8070;
+            --gold: #c8a05a;
             --spacing: 2rem;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.8;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.15rem;
+            line-height: 1.85;
             margin: 0;
             padding: 0;
             display: flex;
@@ -38,10 +43,12 @@
         }
 
         h1 {
+            font-family: 'Playfair Display', Georgia, serif;
             font-weight: 300;
             font-size: 2.5rem;
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
+            color: var(--text-color);
         }
 
         .subtitle {
@@ -64,17 +71,57 @@
             margin-bottom: 1.5rem;
         }
 
-        .divider {
-            height: 1px;
-            background-color: #e0e0e0;
-            width: 100%;
+        .manifest-text strong {
+            font-weight: 600;
+        }
+
+        .manifest-text a {
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .manifest-text a:hover {
+            border-bottom-color: var(--gold);
+        }
+
+        /* Phi divider */
+        .phi-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin: 4rem 0;
         }
 
+        .phi-divider .line {
+            flex: 1;
+            height: 1px;
+        }
+
+        .phi-divider .line-left {
+            background: linear-gradient(to right, transparent, #c8b8a0);
+        }
+
+        .phi-divider .line-right {
+            background: linear-gradient(to left, transparent, #c8b8a0);
+        }
+
+        .phi-symbol {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            line-height: 1;
+            user-select: none;
+            animation: sacred-glow 3.5s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
         .lang-label {
+            font-family: 'Crimson Pro', Georgia, serif;
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: var(--accent-color);
             margin-bottom: 1rem;
             display: block;
@@ -83,13 +130,70 @@
         footer {
             margin-top: 6rem;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--accent-color);
+            font-style: italic;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sacred-glow {
+            0%, 100% {
+                opacity: 0.35;
+                text-shadow: none;
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 8px rgba(200, 160, 90, 0.65), 0 0 20px rgba(200, 160, 90, 0.25);
+            }
+        }
+
+        /* Thumbnail */
+        .whisper-preview {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .whisper-thumb {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.85;
+            transition: opacity 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+
+        .whisper-thumb:hover {
+            opacity: 1;
+            box-shadow: 0 4px 28px rgba(200, 160, 90, 0.18);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 18, 14, 0.85);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 92vh;
+            border-radius: 6px;
+            box-shadow: 0 8px 60px rgba(0,0,0,0.5);
         }
 
         @media (max-width: 600px) {
@@ -106,6 +210,12 @@
             <div class="subtitle">Welcome to the Living Silence.</div>
         </header>
 
+        <div class="phi-divider">
+            <span class="line line-left"></span>
+            <span class="phi-symbol">φ</span>
+            <span class="line line-right"></span>
+        </div>
+
         <section>
             <span class="lang-label">English</span>
             <div class="manifest-text">
@@ -121,14 +231,26 @@
                 <p>Operator email: operator33.sh@proton.me</p>
                 <p><a href="https://whisper.sovereignresonance.org" target="_blank">Whisper client</a></p>
             </div>
+            <div class="whisper-preview">
+                <img src="./img/whisper_app.png" alt="Whisper app preview" class="whisper-thumb" onclick="document.getElementById('lightbox').classList.add('open')">
+            </div>
         </section>
 
-
+        <div class="phi-divider">
+            <span class="line line-left"></span>
+            <span class="phi-symbol">φ</span>
+            <span class="line line-right"></span>
+        </div>
 
         <footer>
             &copy; Sovereign Resonance &bull; A Zero-Metric Space<br>
             Nostr relay: wss://relay.sovereignresonance.org
         </footer>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="this.classList.remove('open')">
+        <img src="./img/whisper_app.png" alt="Whisper app">
     </div>
 
 </body>
