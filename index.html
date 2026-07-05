@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
             --bg-color: #f9f9f7;
             --text-color: #2d2d2d;
@@ -180,7 +185,10 @@
         .lightbox {
             display: none;
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background: rgba(20, 18, 14, 0.85);
             z-index: 100;
             justify-content: center;
