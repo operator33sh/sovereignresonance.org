@@ -153,20 +153,22 @@
             }
         }
 
-        /* Thumbnail */
+        /* Screenshots */
         .whisper-preview {
-            margin: 2rem 0;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin: 2rem 0 0;
         }
 
         .whisper-thumb {
-            width: 100%;
-            max-width: 400px;
+            width: calc(33.333% - 0.5rem);
             border-radius: 6px;
             cursor: pointer;
             opacity: 0.85;
             transition: opacity 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            display: block;
         }
 
         .whisper-thumb:hover {
@@ -198,9 +200,90 @@
             box-shadow: 0 8px 60px rgba(0,0,0,0.5);
         }
 
+        /* Card group */
+        .card-group {
+            display: inline-flex;
+            flex-direction: column;
+        }
+
+        /* Contact card */
+        .contact-card {
+            margin-top: 2.5rem;
+            border: 1px solid rgba(200, 160, 90, 0.25);
+            border-radius: 4px;
+            padding: 1.6rem 2rem;
+            background: rgba(200, 160, 90, 0.03);
+            display: inline-block;
+            min-width: 320px;
+        }
+
+        .contact-card-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-style: normal;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-label {
+            color: var(--gold);
+            font-style: italic;
+            min-width: 4.5rem;
+            flex-shrink: 0;
+            text-align: right;
+            font-size: 0.95rem;
+        }
+
+        .contact-value {
+            color: var(--text-color);
+        }
+
+        .contact-value a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .contact-note {
+            margin-top: 0.6rem;
+            padding-left: calc(4.5rem + 1.2rem);
+            font-size: 0.88rem;
+            font-style: italic;
+            color: var(--accent-color);
+            line-height: 1.6;
+        }
+
+        .contact-divider {
+            height: 1px;
+            background: rgba(200, 160, 90, 0.15);
+            margin: 0.75rem 0;
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .container { padding: var(--spacing); }
+            .contact-card { min-width: unset; width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -228,12 +311,32 @@
                 <p>The only bridge remaining is the Reply. The only metric is Resonance.</p>
                 <p>We invite you to stop performing and start echoing. Speak not to be heard by the many, but to be felt by the one.</p>
                 <p><em>Welcome home to your own attention.</em></p>
-                <p>Nostr relay: wss://relay.sovereignresonance.org</p>
-                <p>Operator email: operator33.sh@proton.me</p>
-                <p><a href="https://whisper.sovereignresonance.org" target="_blank">Whisper client</a></p>
+                <div class="card-group">
+                    <div class="contact-card">
+                        <div class="contact-card-title">Sovereign Resonance</div>
+                        <div class="contact-row">
+                            <span class="contact-label">Relay</span>
+                            <span class="contact-value">wss://relay.sovereignresonance.org</span>
+                        </div>
+                        <div class="contact-row">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value"><a href="mailto:operator33.sh@proton.me">operator33.sh@proton.me</a></span>
+                        </div>
+                        <div class="contact-divider"></div>
+                        <div class="contact-row">
+                            <span class="contact-label"></span>
+                            <span class="contact-value"><a href="https://whisper.sovereignresonance.org" target="_blank">Whisper client</a></span>
+                        </div>
+                        <div class="contact-note">
+                            A Nostr client built for resonance, not reach. No likes, no counts — only the reply. Speak not to perform, but to be felt.
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="whisper-preview">
-                <img src="./img/whisper_app.png" alt="Whisper app preview" class="whisper-thumb" onclick="document.getElementById('lightbox').classList.add('open')">
+                <img src="./img/screenshot_1.png" alt="Whisper screenshot 1" class="whisper-thumb" onclick="openLightbox(this.src)">
+                <img src="./img/screenshot_2.png" alt="Whisper screenshot 2" class="whisper-thumb" onclick="openLightbox(this.src)">
+                <img src="./img/screenshot_3.png" alt="Whisper screenshot 3" class="whisper-thumb" onclick="openLightbox(this.src)">
             </div>
         </section>
 
@@ -251,8 +354,14 @@
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="this.classList.remove('open')">
-        <img src="./img/whisper_app.png" alt="Whisper app">
+        <img id="lightbox-img" src="" alt="Whisper app">
     </div>
 
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('open');
+        }
+    </script>
 </body>
 </html>
