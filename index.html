@@ -185,12 +185,10 @@
         .lightbox {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            inset: 0;
+            margin: 0;
             background: rgba(20, 18, 14, 0.85);
-            z-index: 100;
+            z-index: 9999;
             justify-content: center;
             align-items: center;
             cursor: zoom-out;
@@ -418,7 +416,12 @@
         function openLightbox(src) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
+        document.getElementById('lightbox').addEventListener('click', function() {
+            this.classList.remove('open');
+            document.body.style.overflow = '';
+        });
     </script>
 </body>
 </html>
